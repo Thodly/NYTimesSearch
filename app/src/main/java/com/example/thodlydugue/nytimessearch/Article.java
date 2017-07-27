@@ -37,7 +37,7 @@ public class Article {
             JSONArray multimedia = jsonObject.getJSONArray("multimedia");
                 if (multimedia.length() > 0){
                     JSONObject multimediaJson = multimedia.getJSONObject(0);
-                    this.thumbNail = "http://www.nytimes.com/" + multimediaJson.getString("url");
+                    this.thumbNail = "http://www.nytimes.com/"+multimediaJson.getString("url");
                 }else
                     this.thumbNail = " ";
 
