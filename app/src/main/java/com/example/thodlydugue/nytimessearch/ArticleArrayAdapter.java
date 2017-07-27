@@ -1,0 +1,19 @@
+package com.example.thodlydugue.nytimessearch;
+
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import java.util.List;
+
+/**
+ * Created by thodlydugue on 7/27/2017.
+ */
+
+public class ArticleArrayAdapter extends ArrayAdapter<Article>{
+
+    public ArticleArrayAdapter(Context context, List<Article> articles ){
+        super(context, android.R.layout.simple_list_item_1,articles);
+
+    }
+
+}
