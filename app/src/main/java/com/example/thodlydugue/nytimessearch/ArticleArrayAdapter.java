@@ -37,6 +37,7 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
         }
         //find the image view
         ImageView imageView = convertView.findViewById(R.id.ivImage);
+       // imageView.setImageResource(0);
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         tvTitle.setText(article.getHeadline());
         String thumbnail = article.getThumbNail();
