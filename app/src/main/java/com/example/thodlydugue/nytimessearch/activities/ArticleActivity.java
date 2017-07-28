@@ -1,13 +1,12 @@
 package com.example.thodlydugue.nytimessearch.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import com.example.thodlydugue.nytimessearch.Article;
 import com.example.thodlydugue.nytimessearch.R;
 
 public class ArticleActivity extends AppCompatActivity {
@@ -19,9 +18,17 @@ public class ArticleActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String url =getIntent().getStringExtra("url");
+        Article article = (Article) getIntent().getSerializableExtra("article");
         WebView webView = (WebView) findViewById(R.id.wvArticle);
-        webView.loadUrl(url);
+        webView.setWebViewClient(new WebViewClient() {
+                                     @Override
+                                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                         view.loadUrl(url);
+                                         return true;
+                                     }
+                                 }
+        );
+        webView.loadUrl(article.getWebUrl());
     }
 
 }
