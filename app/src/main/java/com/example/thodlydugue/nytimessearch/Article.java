@@ -31,13 +31,13 @@ public class Article implements Serializable{
             this.webUrl = jsonObject.getString("web_url");
             this.headline = jsonObject.getJSONObject("headline").getString("main");
             JSONArray multimedia = jsonObject.getJSONArray("multimedia");
-                if (multimedia.length() >0){
+                if (multimedia.length()>0){
                     JSONObject multimediaJson = multimedia.getJSONObject(0);
-                    this.thumbNail ="http://www.nytimes.com/"+multimediaJson.getString("url");
-                }else
-                    this.thumbNail = " ";
-
-        } catch (JSONException e) {
+                    this.thumbNail ="https://www.nytimes.com/"+multimediaJson.getString("url");
+                }else {
+                    this.thumbNail = "";
+                }
+                } catch (JSONException e) {
 
         }
     }

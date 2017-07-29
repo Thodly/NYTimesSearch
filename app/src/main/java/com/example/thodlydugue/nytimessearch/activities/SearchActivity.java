@@ -59,6 +59,7 @@ public class SearchActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), ArticleActivity.class);
                 Article article = articles.get(position);
                 i.putExtra("article", article);
+                // Toast.makeText(SearchActivity.this, ""+article.getThumbNail(), Toast.LENGTH_SHORT).show();
                 startActivity(i);
 
             }
@@ -81,7 +82,8 @@ public class SearchActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+           Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
@@ -104,6 +106,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 try {
                     articleJsonResults = response.getJSONObject("response").getJSONArray("docs");
+                    adapter.clear();
                     adapter.addAll(Article.fromJSONArray(articleJsonResults));
                     Log.d("DEBUG", articles.toString());
                 } catch (JSONException e) {
