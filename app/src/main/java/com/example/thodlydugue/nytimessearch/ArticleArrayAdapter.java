@@ -37,12 +37,14 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article> {
         }
         //find the image view
         ImageView imageView = convertView.findViewById(R.id.ivImage);
-        imageView.setImageResource(0);
+        // imageView.setImageResource(0);
         TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
         tvTitle.setText(article.getHeadline());
         String thumbnail = article.getThumbNail();
         if (!TextUtils.isEmpty(thumbnail)) {
-            Picasso.with(getContext()).load(thumbnail).placeholder(R.drawable.place).into(imageView);
+            Picasso.with(getContext()).load(thumbnail).into(imageView);
+        }else{
+            //nothing
         }
 
         return convertView;

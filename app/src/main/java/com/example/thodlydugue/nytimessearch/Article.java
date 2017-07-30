@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by thodlydugue on 7/26/2017.
  */
 
-public class Article implements Serializable{
+public class Article implements Serializable {
 
     String webUrl;
     String headline;
@@ -31,13 +31,13 @@ public class Article implements Serializable{
             this.webUrl = jsonObject.getString("web_url");
             this.headline = jsonObject.getJSONObject("headline").getString("main");
             JSONArray multimedia = jsonObject.getJSONArray("multimedia");
-                if (multimedia.length()>0){
-                    JSONObject multimediaJson = multimedia.getJSONObject(0);
-                    this.thumbNail ="https://www.nytimes.com/"+multimediaJson.getString("url");
-                }else {
-                    this.thumbNail = "";
-                }
-                } catch (JSONException e) {
+            if (multimedia.length() >0){
+                JSONObject multimediaJson = multimedia.getJSONObject(0);
+                this.thumbNail = "http://www.nytimes.com/"+multimediaJson.getString("url");
+            }else
+                this.thumbNail = "";
+
+        } catch (JSONException e) {
 
         }
     }

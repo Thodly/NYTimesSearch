@@ -8,7 +8,6 @@ import android.webkit.WebViewClient;
 
 import com.example.thodlydugue.nytimessearch.Article;
 import com.example.thodlydugue.nytimessearch.R;
-
 public class ArticleActivity extends AppCompatActivity {
 
     @Override
@@ -20,15 +19,16 @@ public class ArticleActivity extends AppCompatActivity {
 
         Article article = (Article) getIntent().getSerializableExtra("article");
         WebView webView = (WebView) findViewById(R.id.wvArticle);
-        webView.setWebViewClient(new WebViewClient() {
-                                     @Override
-                                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                         view.loadUrl(url);
-                                         return true;
-                                     }
-                                 }
-        );
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+                view.loadUrl(url);
+                return true;
+            }
+        });
         webView.loadUrl(article.getWebUrl());
     }
 
 }
+
