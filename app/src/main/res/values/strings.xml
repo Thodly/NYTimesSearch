@@ -5,4 +5,5 @@
     <string name="search">Search</string>
     <string name="Search">Search</string>
     <string name="title_activity_article">ArticleActivity</string>
+    <string name="title_activity_settings">acticitysettings</string>
 </resources>
