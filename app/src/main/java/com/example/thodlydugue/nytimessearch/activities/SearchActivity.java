@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.thodlydugue.nytimessearch.Article;
 import com.example.thodlydugue.nytimessearch.ArticleArrayAdapter;
@@ -80,8 +81,22 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        gvResults.setOnScrollListener(new EndlessScrollListener(5, 0) {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to your AdapterView
 
+                searchPage = page;
+                Toast.makeText(SearchActivity.this, "LoadMore "+searchPage+" - "+totalItemsCount, Toast.LENGTH_LONG).show();
+
+                return true;
+            }
+        });
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
